@@ -14,4 +14,14 @@ class ProductsController < ApplicationController
     sample2 = sample1.sample
     render json: (sample2)
   end
+
+  def all_products
+    @products = Product.all
+    render :index
+  end
+
+  def one_product
+    @product = Product.find_by(id: params["id"])
+    render :show
+  end
 end

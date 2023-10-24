@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   get "/product", controller: "products", action: "product"
   get "/products", controller: "products", action: "product_all"
-  get "/rando", controller: "products", action: "sample3"
+  get "/rando" => "products#sample3"
+  get "/all_products", controller: "products", action: "all_products"
+  get "/one_product/:id" => "products#one_product"
 end
