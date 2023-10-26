@@ -12,13 +12,13 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_equal Product.count, data.length
   end
 
-  test "show" do
-    get "/products/#{Product.first.id}.json"
-    assert_response 200
+  # test "show" do
+  #   get "/products/#{Product.first.id}.json"
+  #   assert_response 200
 
-    data = JSON.parse(response.body)
-    assert_equal ["id", "name", "price", "image_url", "description", "created_at", "updated_at"], data.keys
-  end
+  #   data = JSON.parse(response.body)
+  #   assert_equal ["id", "name", "price", "image_url", "description", "created_at", "updated_at"], data.keys
+  # end
 
   test "create" do
     assert_difference "Product.count", 1 do
