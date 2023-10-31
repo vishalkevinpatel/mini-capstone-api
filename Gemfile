@@ -51,6 +51,9 @@ gem "rack-cors"
 #seed dump to pull data from the database and ppulate the seeds file
 gem "seed_dump"
 
+#interationaliazation gem, sends message in console maybe?
+gem "i18n"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
