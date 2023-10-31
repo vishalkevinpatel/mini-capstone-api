@@ -12,9 +12,8 @@ class SuppliersController < ApplicationController
   def create
     @supplier = Supplier.create(
       name: params["name"],
-      price: params["price"],
-      image_url: params["image_url"],
-      description: params["description"],
+      email: params["email"],
+      phone_number: params["phone_number"],
     )
     # @supplier.save
     # render :show
@@ -29,9 +28,8 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.find_by(id: params["id"])
     @supplier.update(
       name: params["name"] || @supplier.name,
-      price: params["price"] || @supplier.price,
-      image_url: params["image_url"] || @supplier.image_url,
-      description: params["description"] || @supplier.description,
+      email: params["email"] || @supplier.email,
+      phone_number: params["phone_number"] || @supplier.phone_number,
     )
     if @supplier.valid?
       render :show
