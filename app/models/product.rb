@@ -13,6 +13,7 @@ class Product < ApplicationRecord
     price * 0.09
   end
 
+  # goes over to supplier table and finds supplier id, inside the product table (at one specific product), go to supplier table and find the supplier id that matches the product supplier id.  conversely works other way with "has_many :products"
   belongs_to :supplier
   # def supplier
   #   Supplier(find_by(id: supplier_id))
@@ -22,4 +23,6 @@ class Product < ApplicationRecord
   # def images
   #   Image.where(product_id: id)
   # end
+
+  has_many :orders
 end
