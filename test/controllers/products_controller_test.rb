@@ -1,6 +1,13 @@
 require "test_helper"
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = User.create(name: "Admin", email: "admin@admin.com", password: "pass", admin: true)
+    post "/sessions.json", params: { email: "admin@admin.com", password: "pass" }
+    data = JSON.parse(response.body)
+    @jwt = data["jwt"]
+  end
+
   # test "the truth" do
   #   assert true
   # end
@@ -35,10 +42,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   #   assert_equal "Updated name", data["name"]
   # end
 
-  # test "destroy" do
-  #   assert_difference "Product.count", -1 do
-  #     delete "/products/#{Product.first.id}.json"
-  #     assert_response 200
-  #   end
-  # end
+  test "destroy" do
+    assert_difference "Product.count", -1 do
+      delete "/products/#{Product.first.id}.json", headers: { "Authorization" => "Bearer #{@jwt}" }
+      assert_response 200
+    end
+  end
 end

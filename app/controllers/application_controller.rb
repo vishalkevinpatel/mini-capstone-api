@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, unless: -> { request.format.json? }
-  before_action :authenticate_admin, except: [:index, :show]
 
   def current_user
     auth_headers = request.headers["Authorization"]
