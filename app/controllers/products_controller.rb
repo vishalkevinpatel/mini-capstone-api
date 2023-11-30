@@ -20,8 +20,9 @@ class ProductsController < ApplicationController
     @product = Product.create(
       name: params["name"],
       price: params["price"],
-      image_url: params["image_url"],
+      supplier_id: params["supplier_id"],
       description: params["description"],
+      inventory: params["inventory"],
     )
     # @product.save
     # render :show
@@ -37,8 +38,9 @@ class ProductsController < ApplicationController
     @product.update(
       name: params["name"] || @product.name,
       price: params["price"] || @product.price,
-      image_url: params["image_url"] || @product.image_url,
+      supplier_id: params["supplier_id"] || @product.supplier_id,
       description: params["description"] || @product.description,
+      inventory: params["inventory"] || @product.inventory,
     )
     if @product.valid?
       render :show
